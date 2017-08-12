@@ -7,7 +7,8 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())*@
+@using (Html.BeginForm("Create", "Institutions", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -40,6 +41,12 @@
             @Html.ValidationMessageFor(model => model.InstitutionCode, "", new { @class = "text-danger" })
         </div>
 
+        <div class="col-md-10">
+            @Html.LabelFor(model => model.LogoURL)
+            @*Must add name attribute to get value in server*@
+            <input type='file' id="fileLogo" name="fileLogo" onchange="readURL(this);" />
+            <img id="imgLogo" src="#" alt="" />
+        </div>
         <div class="col-md-10">
             @Html.LabelFor(model => model.LogoURL)
             @Html.EditorFor(model => model.LogoURL, new { htmlAttributes = new { @class = "form-control", placeholder = "Select logo..." } })
@@ -77,5 +84,27 @@
             $(this).data('DateTimePicker').hide();
         });
     });
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                //document.getElementById('imgLogo').src = e.target.result;
+
+                var img = $('#imgLogo').attr('src', e.target.result);
+
+                /*Current uploaded image size*/
+                img[0].height = 50;
+                img[0].width = 50;
+
+                /*Get current uploaded image size*/
+                //var width = img[0].height;
+               // var height = img[0].width;
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
 </script>
