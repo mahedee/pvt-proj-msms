@@ -68,7 +68,7 @@ namespace MSMS.Controllers
                 //img.Save("Images/path");
 
                 //logo dirctory
-                institution.LogoURL = path;
+                institution.LogoURL = "~/Images/Logo/" + pic;
 
                 db.Institutions.Add(institution);
                 db.SaveChanges();
@@ -98,10 +98,25 @@ namespace MSMS.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Slogan,Address,InstitutionCode,LogoURL,EstDate")] Institution institution)
+        public ActionResult Edit(Institution institution, HttpPostedFileBase fileLogo)
         {
             if (ModelState.IsValid)
             {
+                // Save image to a folder
+                string pic = System.IO.Path.GetFileName(fileLogo.FileName);
+                string path = System.IO.Path.Combine(
+                                       Server.MapPath("~/Images/Logo"), pic);
+                //fileLogo.SaveAs(path);
+
+                WebImage img = new WebImage(fileLogo.InputStream);
+                if (img.Width > 50)
+                    img.Resize(50, 50);
+                img.Save(path, null, false);
+                //img.Save("Images/path");
+
+                //logo dirctory
+                institution.LogoURL = "~/Images/Logo/" + pic;
+
                 db.Entry(institution).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

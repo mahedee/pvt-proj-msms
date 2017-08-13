@@ -9,17 +9,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
+<table class="table table-hover ">
+    <tr class="success">
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Slogan)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Address)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.InstitutionCode)
         </th>
@@ -37,12 +37,12 @@
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Slogan)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Address)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.InstitutionCode)
         </td>
