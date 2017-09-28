@@ -168,6 +168,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClassNamesController.cs" />
+    <Compile Include="Controllers\ConstractionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstitutionsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -178,9 +180,14 @@
     <Compile Include="Migrations\201708100931097_firstmig.Designer.cs">
       <DependentUpon>201708100931097_firstmig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709280909301_addclassname.cs" />
+    <Compile Include="Migrations\201709280909301_addclassname.Designer.cs">
+      <DependentUpon>201709280909301_addclassname.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ClassName.cs" />
     <Compile Include="Models\Institution.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -349,6 +356,12 @@
     <Content Include="Views\Institutions\Details.cshtml" />
     <Content Include="Views\Institutions\Edit.cshtml" />
     <Content Include="Views\Institutions\Index.cshtml" />
+    <Content Include="Views\Constraction\Index.cshtml" />
+    <Content Include="Views\ClassNames\Create.cshtml" />
+    <Content Include="Views\ClassNames\Delete.cshtml" />
+    <Content Include="Views\ClassNames\Details.cshtml" />
+    <Content Include="Views\ClassNames\Edit.cshtml" />
+    <Content Include="Views\ClassNames\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -362,6 +375,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201708100931097_firstmig.resx">
       <DependentUpon>201708100931097_firstmig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709280909301_addclassname.resx">
+      <DependentUpon>201709280909301_addclassname.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

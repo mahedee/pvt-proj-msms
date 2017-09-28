@@ -21,5 +21,6 @@ namespace MSMS.Repository
         }
 
         public DbSet<Institution> Institutions { get; set; }
+        public DbSet<ClassName> ClassName { get; set; }
     }
 }
